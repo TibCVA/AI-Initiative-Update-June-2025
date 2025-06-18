@@ -1,1 +1,1340 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVA EMEA AI Initiative - Strategic Update</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cva-primary: #0A2E4D;
+            --cva-secondary: #1E5A8E;
+            --cva-accent: #00A8E8;
+            --cva-light: #E8F4FA;
+            --cva-text: #333333;
+            --cva-gray: #666666;
+            --white: #FFFFFF;
+            --success: #2E8B57;
+            --warning: #FF6347;
+            --ai-purple: #8B5CF6;
+            --ai-blue: #3B82F6;
+            --ai-pink: #EC4899;
+            --ai-cyan: #06B6D4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--cva-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #FAFAFA;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb, #f9fafb);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation with glassmorphism */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(200%);
+            -webkit-backdrop-filter: blur(20px) saturate(200%);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--cva-primary) 0%, var(--ai-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--cva-text);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section with particles */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0A2E4D 0%, #1E5A8E 25%, #8B5CF6 75%, #EC4899 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: white;
+            animation: heroSlide 1s ease-out;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes heroSlide {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+            font-weight: 400;
+            animation: heroSlide 1s ease-out 0.2s both;
+        }
+
+        .hero-date {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            animation: heroSlide 1s ease-out 0.4s both;
+        }
+
+        /* Floating shapes */
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: floatShape 20s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            border-radius: 50%;
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--ai-blue) 0%, var(--ai-cyan) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        /* Section Base */
+        .section {
+            min-height: 100vh;
+            padding: 120px 0 60px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            color: white;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 60px;
+            font-weight: 700;
+            font-size: 26px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+
+        .section-number:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--cva-primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        /* Key Message with animation */
+        .key-message {
+            background: linear-gradient(135deg, #F3E7FD 0%, #E8F4FA 100%);
+            border-left: 6px solid transparent;
+            border-image: linear-gradient(180deg, var(--ai-purple) 0%, var(--ai-pink) 100%) 1;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cva-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .key-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Enhanced Timeline */
+        .timeline {
+            position: relative;
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--ai-purple) 0%, var(--ai-pink) 50%, var(--ai-blue) 100%);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 5px solid var(--ai-purple);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.3);
+            border-color: var(--ai-pink);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover::before {
+            transform: scaleX(1);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animated Expense Card */
+        .expense-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expense-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .expense-value {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 50%, var(--ai-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .expense-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .breakdown-item {
+            padding: 24px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .breakdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .breakdown-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .breakdown-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Enhanced Policy Box */
+        .policy-box {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            background-clip: padding-box;
+        }
+
+        .policy-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--warning) 0%, var(--ai-pink) 100%);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        /* Animated Principles Grid */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .principle-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--ai-purple) 0%, var(--ai-pink) 50%, var(--ai-blue) 100%);
+            transform: translateX(-100%);
+            animation: slideRight 3s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            to { transform: translateX(100%); }
+        }
+
+        .principle-card:hover {
+            transform: translateY(-10px) rotateZ(-1deg);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .principle-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Enhanced Strategy Section */
+        .strategy-goal {
+            background: linear-gradient(135deg, var(--cva-primary) 0%, var(--ai-purple) 50%, var(--ai-pink) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-goal::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .levers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .lever-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lever-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .lever-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .lever-card:hover .lever-icon {
+            transform: rotateY(180deg);
+        }
+
+        /* New Future of Work Section */
+        .future-section {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            padding: 80px 0;
+            margin: 60px 0;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .pyramid {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 400px;
+        }
+
+        .pyramid-level {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .pyramid-level:hover {
+            transform: translateX(-50%) scale(1.15);
+            z-index: 10;
+        }
+
+        .level-partner {
+            bottom: 280px;
+            width: 120px;
+            background: linear-gradient(135deg, var(--cva-primary) 0%, var(--cva-secondary) 100%);
+        }
+
+        .level-manager {
+            bottom: 140px;
+            width: 200px;
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-blue) 100%);
+        }
+
+        .level-consultant {
+            bottom: 0;
+            width: 280px;
+            background: linear-gradient(135deg, var(--ai-blue) 0%, var(--ai-cyan) 100%);
+        }
+
+        .future-list {
+            list-style: none;
+        }
+
+        .future-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            position: relative;
+            padding-left: 50px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .future-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .future-item::before {
+            content: '🤖';
+            position: absolute;
+            left: 15px;
+            font-size: 24px;
+        }
+
+        /* Progress Indicator Enhanced */
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 50px 0;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .progress-indicator::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: #E0E0E0;
+            z-index: 0;
+        }
+
+        .progress-indicator::after {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            width: 40%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            z-index: 1;
+            animation: progressFill 3s ease-out;
+        }
+
+        @keyframes progressFill {
+            from { width: 0; }
+            to { width: 40%; }
+        }
+
+        .progress-circle {
+            width: 60px;
+            height: 60px;
+            background: #E0E0E0;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .progress-item.completed .progress-circle {
+            background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-pink) 100%);
+            animation: checkIn 0.5s ease-out;
+        }
+
+        @keyframes checkIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .progress-item.current .progress-circle {
+            background: white;
+            border: 4px solid var(--ai-purple);
+            color: var(--ai-purple);
+            animation: currentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes currentPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+            50% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(139, 92, 246, 0); }
+        }
+
+        /* Footer Enhanced */
+        .footer {
+            background: linear-gradient(135deg, var(--cva-primary) 0%, var(--ai-purple) 100%);
+            color: white;
+            padding: 80px 0 50px;
+            margin-top: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 80px;
+                margin-right: 0;
+                padding-left: 30px;
+                padding-right: 30px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .principles-grid,
+            .levers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-content">
+            <div class="logo">CVA</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#hero" class="nav-link active">Overview</a></li>
+                <li class="nav-item"><a href="#training" class="nav-link">AI Training</a></li>
+                <li class="nav-item"><a href="#expenses" class="nav-link">Tool Expenses</a></li>
+                <li class="nav-item"><a href="#governance" class="nav-link">Governance</a></li>
+                <li class="nav-item"><a href="#rampup" class="nav-link">Ramp-up Strategy</a></li>
+                <li class="nav-item"><a href="#future" class="nav-link">Future of Work</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+        </div>
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">CVA EMEA AI Initiative</h1>
+            <p class="hero-subtitle">Strategic Update on Training, Tools, Governance & Roadmap</p>
+            <p class="hero-date">June 2025</p>
+        </div>
+    </section>
+
+    <!-- Section 1: AI Training Update -->
+    <section class="section" id="training">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">Update on AI Training</h2>
+                <p class="section-subtitle">Building comprehensive AI capabilities across CVA EMEA</p>
+            </div>
+
+            <div class="key-message">
+                First AI use cases training done in May for consultants with very positive feedback.
+                First AI induction for P/AP done in June.
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2025</div>
+                        <div class="timeline-title">First AI Use Cases Training</div>
+                        <div class="timeline-description">
+                            Delivered to consultants with very positive feedback
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 2025</div>
+                        <div class="timeline-title">First AI induction for P/AP</div>
+                        <div class="timeline-description">
+                            Leadership engagement secured
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: var(--ai-pink); background: var(--ai-pink);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">July 2025</div>
+                        <div class="timeline-title">Next Steps</div>
+                        <div class="timeline-description">
+                            • Update the AI use cases training deck with the most recent capabilities<br>
+                            • Propose a new training in July for CVA EMEA
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-item completed">
+                    <div class="progress-circle">✓</div>
+                    <div class="progress-label">Initial Training</div>
+                </div>
+                <div class="progress-item completed">
+                    <div class="progress-circle">✓</div>
+                    <div class="progress-label">Leadership Buy-in</div>
+                </div>
+                <div class="progress-item current">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">Content Update</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">Full Deployment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: AI Tools Expenses -->
+    <section class="section" id="expenses" style="background-color: #fafafa;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">Update on AI Tools Expenses</h2>
+                <p class="section-subtitle">Current spend analysis and proposed expense policy framework</p>
+            </div>
+
+            <div class="expense-card">
+                <div class="expense-header">
+                    <div>
+                        <div class="expense-value">€6,000</div>
+                        <div class="expense-label">6k€ spent by CVA EMEA offices since start of 2025</div>
+                    </div>
+                </div>
+
+                <div class="key-message" style="margin-top: 30px;">
+                    Large share of the expenses have been put on COR3E0 CC, other expenses linked to specific projects CC.
+                    Most of the expenses linked to ChatGPT plus and pro accounts (not Claude).
+                </div>
+
+                <div class="expense-breakdown">
+                    <div class="breakdown-item">
+                        <div class="breakdown-value">COR3E0</div>
+                        <div class="breakdown-label">Primary Cost Center</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-value">ChatGPT</div>
+                        <div class="breakdown-label">Main Tool Used</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-value">Projects</div>
+                        <div class="breakdown-label">Specific CC Allocation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <div class="policy-title">
+                    <span style="font-size: 28px;">⚠️</span>
+                    Need to clarify expenses policy on AI tools
+                </div>
+                <div class="policy-item">
+                    Personal ChatGPT Plus or Claude plus accounts (20€/months) should be considered mandatory and linked to a specific CVA EMEA budget
+                </div>
+                <div class="policy-item">
+                    Personal ChatGPT pro accounts should be validate by Practice Partners on a case by case basis and linked to specific projects budgets
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: AI Governance Principles -->
+    <section class="section" id="governance">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Proposal of AI Governance Principles</h2>
+                <p class="section-subtitle">Ensuring responsible and secure use of generative AI across all client engagements</p>
+            </div>
+
+            <div class="key-message">
+                An official guideline needs to be communicated to everyone to ensure good practices and accountability towards our clients.
+                Direct managers should be in charge of checking for wrong AI usages within their projects.
+            </div>
+
+            <p style="font-size: 17px; color: var(--cva-gray); margin: 30px 0; line-height: 1.7;">
+                The use of generative artificial intelligence (GenAI) tools is subject to a charter of best practices 
+                communicated to all CVA employees.
+            </p>
+
+            <h3 style="color: var(--cva-primary); margin: 40px 0 30px; font-size: 24px;">Proposed governance principles:</h3>
+
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-number">1</div>
+                    <div class="principle-title">Principle 1: Compliance & Authorization</div>
+                    <div class="principle-content">
+                        The use of generative AI tools must strictly comply with the Client's internal policies, and requires prior authorization for each use case
+                    </div>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">2</div>
+                    <div class="principle-title">Principle 2: Information Protection</div>
+                    <div class="principle-content">
+                        No confidential or sensitive information may be shared with LLMs (Large Language Models). Only LLMs with strict data governance policies—guaranteeing no user data is used for training—are authorized
+                    </div>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">3</div>
+                    <div class="principle-title">Principle 3: Consultant Training</div>
+                    <div class="principle-content">
+                        All consultants must complete dedicated training on responsible AI usage, covering risks associated with generative AI and best practices for maintaining information confidentiality
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: AI Ramp-up Proposal -->
+    <section class="section" id="rampup" style="background-color: #fafafa;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Proposal for AI Ramp-up</h2>
+                <p class="section-subtitle">Strategic roadmap to achieve full AI literacy and operational excellence by end of 2025</p>
+            </div>
+
+            <div class="strategy-goal">
+                <h3>Main goal: full and advanced gen AI literacy and efficient use among CVA EMEA by end of 2025</h3>
+            </div>
+
+            <h3 style="color: var(--cva-primary); margin: 40px 0 30px; font-size: 28px;">Levers:</h3>
+
+            <div class="levers-grid">
+                <div class="lever-card">
+                    <div class="lever-icon">🎓</div>
+                    <div class="lever-title">Training</div>
+                    <ul class="lever-items">
+                        <li class="lever-item">Systematic AI training for consultants / managers twice a year</li>
+                        <li class="lever-item">AI training for P/AP once a year</li>
+                    </ul>
+                </div>
+
+                <div class="lever-card">
+                    <div class="lever-icon">🚀</div>
+                    <div class="lever-title">Best practices and advanced use cases diffusion</div>
+                    <ul class="lever-items">
+                        <li class="lever-item">Through AI ambassadors in each Practice</li>
+                        <li class="lever-item">Specific advanced training to be done on a quarterly basis with Thibaut L</li>
+                    </ul>
+                </div>
+
+                <div class="lever-card">
+                    <div class="lever-icon">🛠️</div>
+                    <div class="lever-title">New tools deployment</div>
+                    <ul class="lever-items">
+                        <li class="lever-item">Currently testing automatic slides generation: should be deployed at CVA by end of 2025 after pilot phase (see Noogat demo)</li>
+                        <li class="lever-item">Currently working on agentic workflows</li>
+                    </ul>
+                </div>
+
+                <div class="lever-card">
+                    <div class="lever-icon">📊</div>
+                    <div class="lever-title">AI augmented project management feedback</div>
+                    <ul class="lever-items">
+                        <li class="lever-item">Objective to collect dos and don'ts from AI-heavy missions (ex. Due diligences) in order to structure the best AI processes for specific missions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Future of Work -->
+    <section class="section" id="future">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">Anticipatory Reflection on Future of Consulting</h2>
+                <p class="section-subtitle">Impact on recruitment and HR pyramid considering AI automation trends</p>
+            </div>
+
+            <div class="future-section">
+                <div class="container">
+                    <h3 style="text-align: center; font-size: 36px; color: var(--cva-primary); margin-bottom: 50px;">
+                        AI Impact Across All CVA Levels
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 300px 1fr; gap: 60px; align-items: start;">
+                        <div class="future-visual">
+                            <div class="pyramid">
+                                <div class="pyramid-level level-partner">P/AP</div>
+                                <div class="pyramid-level level-manager" style="background: linear-gradient(135deg, var(--ai-purple) 0%, var(--ai-blue) 100%); box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);">M/SM</div>
+                                <div class="pyramid-level level-consultant" style="background: linear-gradient(135deg, var(--ai-pink) 0%, var(--warning) 100%); box-shadow: 0 0 40px rgba(236, 72, 153, 0.6); transform: translateX(-50%) scale(1.1);">C/SC</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 40px;">
+                            <!-- C/SC Impact -->
+                            <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border-left: 5px solid var(--ai-pink);">
+                                <h4 style="color: var(--ai-pink); font-size: 24px; margin-bottom: 20px;">C/SC Level - Traditional Junior Tasks Automated</h4>
+                                <ul class="future-list">
+                                    <li class="future-item">Data research and collection</li>
+                                    <li class="future-item">Financial modeling and analysis</li>
+                                    <li class="future-item">Synthesis and report writing</li>
+                                    <li class="future-item">Slide production and formatting</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- M/SM Impact -->
+                            <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border-left: 5px solid var(--ai-purple);">
+                                <h4 style="color: var(--ai-purple); font-size: 24px; margin-bottom: 20px;">M/SM Level - Team & Mission Management Evolution</h4>
+                                <ul class="future-list">
+                                    <li class="future-item" style="padding-left: 50px;">
+                                        <span style="position: absolute; left: 15px;">🤝</span>
+                                        Evolution of team management with AI agents deployment
+                                    </li>
+                                    <li class="future-item" style="padding-left: 50px;">
+                                        <span style="position: absolute; left: 15px;">🎯</span>
+                                        Mission delivery processes transformation with AI integration
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- P/AP Impact -->
+                            <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border-left: 5px solid var(--cva-primary);">
+                                <h4 style="color: var(--cva-primary); font-size: 24px; margin-bottom: 20px;">P/AP Level - Client Expectations & Differentiation</h4>
+                                <ul class="future-list">
+                                    <li class="future-item" style="padding-left: 50px;">
+                                        <span style="position: absolute; left: 15px;">💡</span>
+                                        Evolution of client expectations regarding AI usage
+                                    </li>
+                                    <li class="future-item" style="padding-left: 50px;">
+                                        <span style="position: absolute; left: 15px;">🚀</span>
+                                        New differentiation levers in AI-augmented consulting
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message" style="margin-top: 40px;">
+                This evolution requires anticipatory thinking on CVA's future HR pyramid, recruitment strategies, 
+                and the redefinition of consultant and manager roles in an AI-augmented environment.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">CVA</div>
+            <p class="footer-text">
+                Corporate Value Associates<br>
+                AI Initiative - Driving Innovation Through Responsible AI Adoption<br>
+                © 2025 CVA. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate expense value on scroll
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const expenseValue = document.querySelector('.expense-value');
+            if (expenseValue && !animated) {
+                const rect = expenseValue.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    animated = true;
+                    let start = 0;
+                    const end = 6000;
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    
+                    function animate(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = Math.floor(progress * end);
+                        expenseValue.textContent = `€${current.toLocaleString()}`;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    }
+                    
+                    requestAnimationFrame(animate);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
